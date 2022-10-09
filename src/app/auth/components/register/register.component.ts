@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   //стандартный декоратор для создания компонента
@@ -15,10 +15,13 @@ export class RegisterComponent implements OnInit {
   }
   initializeForm(): void {
     this.form = this.fb.group({
-      username: '',
+      username: ['', Validators.required],
       email: '',
       password: '',
     });
-    console.log(this.form);
+  }
+
+  onSubmit(): void {
+    console.log(this.form.value);
   }
 }
