@@ -5,6 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms'; // зависимость 
 
 // все что сверху импорты из библиотек, а снизу свои
 import { RegisterComponent } from 'src/app/auth/components/register/register.component'; //дучше все импорты писать с абсолютным путем
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store/reducers';
 
 const routes: Routes = [
   //делаем рендер в этом модуле
@@ -16,7 +18,12 @@ const routes: Routes = [
 
 @NgModule({
   //стандартная запись для создания модуля
-  imports: [CommonModule, RouterModule.forChild(routes), ReactiveFormsModule], //принимает объект(когда импортируем routes для модуля делаем через forChild)
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    StoreModule.forFeature('auth', reducers),
+  ], //принимает объект(когда импортируем routes для модуля делаем через forChild)
   declarations: [RegisterComponent], //описываем в поле какие компоненты надо зарегистрировать
 })
 export class AuthModule {}

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { registerAction } from 'src/app/auth/store/actions/register.action';
+import { isSubmittingSelector } from '../../store/selectors';
 
 @Component({
   //стандартный декоратор для создания компонента
@@ -11,9 +13,11 @@ import { registerAction } from 'src/app/auth/store/actions/register.action';
 })
 export class RegisterComponent implements OnInit {
   form!: FormGroup;
+  isSubmitting$!: Observable<void>;
   constructor(private fb: FormBuilder, private store: Store) {}
   ngOnInit(): void {
     this.initializeForm();
+    this.initializevalues();
   }
   initializeForm(): void {
     this.form = this.fb.group({
@@ -21,6 +25,11 @@ export class RegisterComponent implements OnInit {
       email: '',
       password: '',
     });
+  }
+
+  initializevalues(): void {
+    this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector));
+    console.log('isSubmitting', this.isSubmitting$);
   }
 
   onSubmit(): void {
