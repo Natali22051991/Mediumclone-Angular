@@ -7,6 +7,11 @@ import { ReactiveFormsModule } from '@angular/forms'; // зависимость 
 import { RegisterComponent } from 'src/app/auth/components/register/register.component'; //дучше все импорты писать с абсолютным путем
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/reducers';
+import { AuthService } from './services/auth.service';
+import { RegisterEffect } from './store/effects/regisret.effect';
+import { EffectsModule } from '@ngrx/effects';
+import { BackendErrorMessagesModule } from '../shared/modules/backendErrorMassages/backendErrorMessages.module';
+import { PersistanceService } from '../shared/services/persistance.service';
 
 const routes: Routes = [
   //делаем рендер в этом модуле
@@ -22,8 +27,11 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
+    EffectsModule.forFeature([RegisterEffect]),
     StoreModule.forFeature('auth', reducers),
+    BackendErrorMessagesModule,
   ], //принимает объект(когда импортируем routes для модуля делаем через forChild)
   declarations: [RegisterComponent], //описываем в поле какие компоненты надо зарегистрировать
+  providers: [AuthService, PersistanceService],
 })
 export class AuthModule {}
