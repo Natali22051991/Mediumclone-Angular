@@ -5,12 +5,11 @@ import { Observable } from 'rxjs';
 import { loginAction } from 'src/app/auth/store/actions/login.action';
 import { LoginRequestInterface } from 'src/app/auth/types/loginRequest.interface';
 import { BackendErrorsInterface } from 'src/app/shared/types/backendErrors.interface';
-import { CurrentUserInterface } from 'src/app/shared/types/currentUser.interface';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import {
   isSubmittingSelector,
   validationErrorsSelector,
-} from '../../../store/selectors';
+} from '../../store/selectors';
 
 @Component({
   //стандартный декоратор для создания компонента

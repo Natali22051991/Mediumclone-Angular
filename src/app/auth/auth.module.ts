@@ -13,7 +13,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { BackendErrorMessagesModule } from '../shared/modules/backendErrorMassages/backendErrorMessages.module';
 import { PersistanceService } from '../shared/services/persistance.service';
 import { LoginEffect } from './store/effects/login.effect';
-import { LoginComponent } from './components/register/login/login.component';
+import { LoginComponent } from './components/login/login.component';
+import { getCurrentUserEffect } from './store/effects/getCurrentUser.effect';
 
 const routes: Routes = [
   //делаем рендер в этом модуле
@@ -33,7 +34,11 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    EffectsModule.forFeature([RegisterEffect, LoginEffect]),
+    EffectsModule.forFeature([
+      RegisterEffect,
+      LoginEffect,
+      getCurrentUserEffect,
+    ]),
     StoreModule.forFeature('auth', reducers),
     BackendErrorMessagesModule,
   ], //принимает объект(когда импортируем routes для модуля делаем через forChild)

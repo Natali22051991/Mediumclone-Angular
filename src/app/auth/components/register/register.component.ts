@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { registerAction } from 'src/app/auth/store/actions/register.action';
 import { BackendErrorsInterface } from 'src/app/shared/types/backendErrors.interface';
-import { CurrentUserInterface } from 'src/app/shared/types/currentUser.interface';
+
 import { AuthService } from '../../services/auth.service';
 import {
   isSubmittingSelector,
@@ -24,8 +24,7 @@ export class RegisterComponent implements OnInit {
   backendErrors$!: Observable<BackendErrorsInterface | null>;
   constructor(
     private fb: FormBuilder,
-    private store: Store,
-    private authService: AuthService
+    private store: Store // private authService: AuthService
   ) {}
   ngOnInit(): void {
     this.initializeForm();
