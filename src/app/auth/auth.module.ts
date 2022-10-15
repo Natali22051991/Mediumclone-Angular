@@ -13,12 +13,17 @@ import { EffectsModule } from '@ngrx/effects';
 import { BackendErrorMessagesModule } from '../shared/modules/backendErrorMassages/backendErrorMessages.module';
 import { PersistanceService } from '../shared/services/persistance.service';
 import { LoginEffect } from './store/effects/login.effect';
+import { LoginComponent } from './components/register/login/login.component';
 
 const routes: Routes = [
   //делаем рендер в этом модуле
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
 ];
 
@@ -32,7 +37,7 @@ const routes: Routes = [
     StoreModule.forFeature('auth', reducers),
     BackendErrorMessagesModule,
   ], //принимает объект(когда импортируем routes для модуля делаем через forChild)
-  declarations: [RegisterComponent], //описываем в поле какие компоненты надо зарегистрировать
+  declarations: [RegisterComponent, LoginComponent], //описываем в поле какие компоненты надо зарегистрировать
   providers: [AuthService, PersistanceService],
 })
 export class AuthModule {}
