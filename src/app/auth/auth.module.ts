@@ -12,6 +12,7 @@ import { RegisterEffect } from './store/effects/regisret.effect';
 import { EffectsModule } from '@ngrx/effects';
 import { BackendErrorMessagesModule } from '../shared/modules/backendErrorMassages/backendErrorMessages.module';
 import { PersistanceService } from '../shared/services/persistance.service';
+import { LoginEffect } from './store/effects/login.effect';
 
 const routes: Routes = [
   //делаем рендер в этом модуле
@@ -27,7 +28,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    EffectsModule.forFeature([RegisterEffect]),
+    EffectsModule.forFeature([RegisterEffect, LoginEffect]),
     StoreModule.forFeature('auth', reducers),
     BackendErrorMessagesModule,
   ], //принимает объект(когда импортируем routes для модуля делаем через forChild)
