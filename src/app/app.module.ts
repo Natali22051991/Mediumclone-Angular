@@ -9,6 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
+import { TopBarModule } from './shared/modules/backendErrorMassages/topBar/topBar.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { EffectsModule } from '@ngrx/effects';
       logOnly: environment.production,
       autoPause: true,
     }),
+    TopBarModule,
   ], //здесь связываем модули
   providers: [],
   bootstrap: [AppComponent],
