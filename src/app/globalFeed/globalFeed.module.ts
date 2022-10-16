@@ -1,9 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { BannerModule } from '../shared/modules/banner/banner.module';
-import { FeedModule } from '../shared/modules/Feed/feed.module';
-import { GlobalFeedComponent } from './components/globalFeed.component';
+
+import { GlobalFeedComponent } from 'src/app/globalFeed/components/globalFeed.component';
+import { FeedModule } from 'src/app/shared/modules/Feed/feed.module';
+import { BannerModule } from 'src/app/shared/modules/banner/banner.module';
 
 const routes = [
   {
