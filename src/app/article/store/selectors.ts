@@ -2,7 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ArticleStateInterface } from 'src/app/article/types/articleState.interface';
 
 export const articleFeatureSelector =
-  createFeatureSelector<ArticleStateInterface>('feed');
+  createFeatureSelector<ArticleStateInterface>('article');
 
 export const isLoadingSelector = createSelector(
   articleFeatureSelector,

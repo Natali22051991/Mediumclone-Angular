@@ -1,31 +1,49 @@
-<mc-loading *ngIf="isLoading$ | async"></mc-loading>
-<mc-error-message *ngIf="error$ | async"></mc-error-message>
-
-<div *ngIf="feed$ | async">
-<div class="article-preview" *ngFor="let article of (feed$ |async)?.articles">
-<div class="article-meta">
-    <a [routerLink]="['/profiles',article.author.username]">
-        <img [src]="article.author.image"/>
-    </a>
-    <div class="info">
-        <a [routerLink]="['/profiles',article.author.username]">
-            {{article.author.username}}
+<div class="article-page">
+  <div class="banner">
+    <div class="container" *ngIf="article">
+      <h1>{{ article.title }}</h1>
+      <div class="article-meta">
+        <a [routerLink]="['/profiles', article.author.username]">
+          <img [src]="article.author.image" />
         </a>
-        <span class="date">{{article.createdAt}}</span>
+        <div class="info">
+          <a [routerLink]="['/profiles', article.author.username]">
+            {{ article.author.username }}
+          </a>
+          <span class="date">
+            {{ article.createdAt }}
+          </span>
+        </div>
+        <span *ngIf="isAuthor$ | async">
+          <a
+            [routerLink]="['/articles', article.slug, 'edit']"
+            class="btn btn-outline-secondary btn-sm"
+          >
+            <i class="ion-edit"></i>
+            Edit Article
+          </a>
+          <button
+          class="btn btn-outline-danger btn-sm"
+          (click)="deleteArticle()"
+        >
+          Delete Article
+        </button>
+
+        </span>
+      </div>
     </div>
-    <div class="pull-xs-right">
-        ADD TO FAVORITES
+  </div>
+  <div class="container page">
+    <mc-loading *ngIf="isLoading$ | async"></mc-loading>
+    <mc-error-message *ngIf="error$ | async"></mc-error-message>
+
+    <div class="row article-content" *ngIf="article">
+      <div class="col-xs-12">
+        <div>
+          <p>{{ article.body }}</p>
+        </div>
+        <mc-tag-list [tags]="article.tagList"></mc-tag-list>
+      </div>
     </div>
-</div>
-<a [routerLink]="['/articles', article.slug]" class="preview-link">
-    <h1>{{article.title}}</h1>
-    <p>{{article.description}}</p>
-    <mc-tag-list [tags]="article.tagList"></mc-tag-list>
-</a>
-</div>
-<mc-pagination 
-[total]="(feed$|async)?.articlesCount" 
-[limit]="limit" 
-[url]="baseUrl" 
-[currentPage]="currentPage"></mc-pagination>
+  </div>
 </div>

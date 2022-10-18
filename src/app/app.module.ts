@@ -16,6 +16,7 @@ import { GlobalFeedModule } from './globalFeed/globalFeed.module';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { YourFeedModule } from './yourFeed/yourFeed.module';
 import { TagFeedModule } from './tagFeedFeed/tagFeed.module';
+import { ArticleModule } from './article/article.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +36,7 @@ import { TagFeedModule } from './tagFeedFeed/tagFeed.module';
     GlobalFeedModule,
     YourFeedModule,
     TagFeedModule,
+    ArticleModule,
   ], //здесь связываем модули
   providers: [
     PersistanceService,
