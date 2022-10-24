@@ -18,28 +18,27 @@ import { YourFeedModule } from './yourFeed/yourFeed.module';
 import { TagFeedModule } from './tagFeedFeed/tagFeed.module';
 import { ArticleModule } from './article/article.module';
 import { CreateArticleModule } from './createArticle/createArticle.module';
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     AuthModule,
-    HttpClientModule,
     StoreModule.forRoot({ router: routerReducer }),
-    EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
     }),
-    StoreRouterConnectingModule.forRoot(),
+    EffectsModule.forRoot([]),
     TopBarModule,
     GlobalFeedModule,
     YourFeedModule,
     TagFeedModule,
     CreateArticleModule,
     ArticleModule,
-  ], //здесь связываем модули
+  ],
   providers: [
     PersistanceService,
     {

@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ArticleInputInterface } from 'src/app/shared/types/articleInput.interface';
 import { BackendErrorsInterface } from 'src/app/shared/types/backendErrors.interface';
-
 @Component({
   selector: 'mc-article-form',
   templateUrl: './articleForm.component.html',
@@ -23,6 +22,7 @@ export class ArticleFormComponent implements OnInit {
   ngOnInit(): void {
     this.initializeForm();
   }
+
   initializeForm(): void {
     this.form = this.fb.group({
       title: this.initialValuesProps.title,

@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 export class ArticleService {
   constructor(private http: HttpClient) {}
   deleteArticle(slug: string): Observable<{}> {
-    const url = `${environment.apiUrl}/articles${slug}`;
+    const url = `${environment.apiUrl}/articles/${slug}`;
     return this.http.delete<{}>(url);
   }
 }
