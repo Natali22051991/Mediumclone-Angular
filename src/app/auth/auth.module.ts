@@ -15,6 +15,7 @@ import { PersistanceService } from '../shared/services/persistance.service';
 import { LoginEffect } from './store/effects/login.effect';
 import { LoginComponent } from './components/login/login.component';
 import { getCurrentUserEffect } from './store/effects/getCurrentUser.effect';
+import { UpdateCurrentUserEffect } from './store/effects/updateCurrentUser.effect';
 
 const routes: Routes = [
   //делаем рендер в этом модуле
@@ -38,6 +39,7 @@ const routes: Routes = [
       RegisterEffect,
       LoginEffect,
       getCurrentUserEffect,
+      UpdateCurrentUserEffect,
     ]),
     StoreModule.forFeature('auth', reducers),
     BackendErrorMessagesModule,
