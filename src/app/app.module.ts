@@ -9,17 +9,17 @@ import { StoreModule } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
-import { TopBarModule } from './shared/modules/backendErrorMassages/topBar/topBar.module';
-import { PersistanceService } from './shared/services/persistance.service';
-import { AuthInterceptor } from './shared/services/authinterceptor.service.';
-import { GlobalFeedModule } from './globalFeed/globalFeed.module';
+import { TopBarModule } from 'src/app/shared/modules/backendErrorMassages/topBar/topBar.module';
+import { PersistanceService } from 'src/app/shared/services/persistance.service';
+import { AuthInterceptor } from 'src/app/shared/services/authinterceptor.service.';
+import { GlobalFeedModule } from 'src/app/globalFeed/globalFeed.module';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
-import { YourFeedModule } from './yourFeed/yourFeed.module';
-import { TagFeedModule } from './tagFeedFeed/tagFeed.module';
-import { ArticleModule } from './article/article.module';
-import { CreateArticleModule } from './createArticle/createArticle.module';
-import { EditArticleModule } from './editArticle/editArticle.module';
-import { SettingsModule } from './settings/settings.module';
+import { YourFeedModule } from 'src/app/yourFeed/yourFeed.module';
+import { TagFeedModule } from 'src/app/tagFeedFeed/tagFeed.module';
+import { ArticleModule } from 'src/app/article/article.module';
+import { CreateArticleModule } from 'src/app/createArticle/createArticle.module';
+import { EditArticleModule } from 'src/app/editArticle/editArticle.module';
+import { SettingsModule } from 'src/app/settings/settings.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
