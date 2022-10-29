@@ -5,7 +5,6 @@ import { addToFavoritesAction } from 'src/app/shared/modules/addToFavorites/stor
 @Component({
   selector: 'mc-add-to-favorites',
   templateUrl: './addToFavorites.component.html',
-  styleUrls: ['./addToFavorites.component.scss'],
 })
 export class AddToFavoriteComponent implements OnInit {
   @Input('isFavorited') isFavoritedProps: boolean;
