@@ -7,7 +7,7 @@ import { ArticleFormModule } from 'src/app/shared/modules/articleForm/articleFor
 import { CreateArticleService } from 'src/app/createArticle/services/createArticle.service';
 import { CreateArticleEffect } from 'src/app/createArticle/store/effects/createArticle.effect';
 import { StoreModule } from '@ngrx/store';
-import { reducers } from 'src/app/createArticle/types/reducers';
+import { reducers } from 'src/app/createArticle/store/reducers';
 
 const routes = [
   {
