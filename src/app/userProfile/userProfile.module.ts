@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { reducers } from '../auth/store/reducers';
+import { reducers } from 'src/app/userProfile/components/userProfile/store/reducers';
+import { FeedModule } from '../shared/modules/Feed/feed.module';
 import { GetUserProfileEffect } from './components/userProfile/store/effects/getUserProfile.effect';
 import { UserProfileComponent } from './components/userProfile/userProfile.component';
 import { UserProfileService } from './services/userProfile.service';
@@ -25,6 +26,7 @@ const routes = [
     RouterModule.forChild(routes),
     EffectsModule.forFeature([GetUserProfileEffect]),
     StoreModule.forFeature('userProfile', reducers),
+    FeedModule,
   ],
   declarations: [UserProfileComponent],
   providers: [UserProfileService],

@@ -1,1 +1,54 @@
-User Pfofile
+hjhjhj{{isCurrentUserProfile$ | async}}<div class="profile-page" *ngIf="userProfile">
+    <div class="user-info">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-10 offset-md-1">
+            <img class="user-img" [src]="userProfile.image" />
+            <h4>{{ userProfile.username }}</h4>
+            <p>{{ userProfile.bio }}</p>
+            <div>
+              FOLLOW USER BUTTON
+              <a
+                *ngIf="isCurrentUserProfile$ | async"
+                class="btn btn-sm btn-outline-secondary action-btn"
+                [routerLink]="['/settings']"
+                >Edit Profile Settings</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-10 offset-md-1">
+          <div class="articles-toggle">
+            <ul class="nav nav-pills outline-active">
+              <li class="nav-item">
+                <!-- We need this hack because angular doesnt understand route change -->
+                <!-- https://github.com/angular/angular/issues/18469 -->
+                <a
+                  [routerLink]="['/profiles', userProfile.username]"
+                  class="nav-link"
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: isCurrentUserProfile$|async}"
+                >
+                  My Posts
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  [routerLink]="['/profiles', userProfile.username, 'favorites']"
+                  class="nav-link"
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: isCurrentUserProfile$|async}">
+                  Favorites Posts
+                </a>
+              </li>
+            </ul>
+          </div>
+          <mc-feed [apiUrl]="getApiUrl()"></mc-feed>
+        </div>
+      </div>
+    </div>
+  </div>

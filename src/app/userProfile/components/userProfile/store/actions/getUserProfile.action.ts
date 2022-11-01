@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { ProfileInterface } from 'src/app/shared/types/profile.interface';
 import { ActionTypes } from 'src/app/userProfile/components/userProfile/store/actionTypes';
+import { UserProfileInterface } from 'src/app/userProfile/components/userProfile/types/userProfile.interface';
 
 export const getUserProfileAction = createAction(
   ActionTypes.GET_USER_PROFILE,
@@ -9,7 +9,7 @@ export const getUserProfileAction = createAction(
 
 export const getUserProfileSuccessAction = createAction(
   ActionTypes.GET_USER_PROFILE_SUCCESS,
-  props<{ userProfile: ProfileInterface }>()
+  props<{ userProfile: UserProfileInterface }>()
 );
 
 export const getUserProfileFailureAction = createAction(

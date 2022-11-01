@@ -1,7 +1,7 @@
-import { ProfileInterface } from 'src/app/shared/types/profile.interface';
+import { UserProfileInterface } from 'src/app/userProfile/components/userProfile/types/userProfile.interface';
 
 export interface UserProfileStateInterface {
-  data: ProfileInterface | null;
+  data: UserProfileInterface | null;
   isLoading: boolean;
   error: string | null;
 }

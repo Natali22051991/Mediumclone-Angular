@@ -8,7 +8,7 @@ import {
   getUserProfileFailureAction,
   getUserProfileSuccessAction,
 } from '../actions/getUserProfile.action';
-import { ProfileInterface } from 'src/app/shared/types/profile.interface';
+import { UserProfileInterface } from 'src/app/userProfile/components/userProfile/types/userProfile.interface';
 
 @Injectable()
 export class GetUserProfileEffect {
@@ -17,9 +17,10 @@ export class GetUserProfileEffect {
       ofType(getUserProfileAction),
       switchMap(({ slug }) => {
         return this.userProfileService.getUserProfile(slug).pipe(
-          map((userProfile: ProfileInterface) => {
+          map((userProfile: UserProfileInterface) => {
             return getUserProfileSuccessAction({ userProfile });
           }),
+
           catchError(() => {
             return of(getUserProfileFailureAction());
           })
@@ -27,6 +28,7 @@ export class GetUserProfileEffect {
       })
     )
   );
+
   constructor(
     private actions$: Actions,
     private userProfileService: UserProfileService

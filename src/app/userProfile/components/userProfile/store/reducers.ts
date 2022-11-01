@@ -1,17 +1,15 @@
-import { state } from '@angular/animations';
-import { act } from '@ngrx/effects';
-import { Action, createReducer, on } from '@ngrx/store';
 import { UserProfileStateInterface } from '../types/userProfileState.interface';
+import { createReducer, on, Action } from '@ngrx/store';
 import {
   getUserProfileAction,
-  getUserProfileFailureAction,
   getUserProfileSuccessAction,
-} from './actions/getUserProfile.action';
+  getUserProfileFailureAction,
+} from 'src/app/userProfile/components/userProfile/store/actions/getUserProfile.action';
 
 const initialState: UserProfileStateInterface = {
+  data: null,
   isLoading: false,
   error: null,
-  data: null,
 };
 
 const userProfileReducer = createReducer(
@@ -20,14 +18,14 @@ const userProfileReducer = createReducer(
     getUserProfileAction,
     (state): UserProfileStateInterface => ({
       ...state,
-      isLoading: false,
+      isLoading: true,
     })
   ),
   on(
     getUserProfileSuccessAction,
     (state, action): UserProfileStateInterface => ({
       ...state,
-      isLoading: true,
+      isLoading: false,
       data: action.userProfile,
     })
   ),
@@ -39,6 +37,7 @@ const userProfileReducer = createReducer(
     })
   )
 );
+
 export function reducers(state: UserProfileStateInterface, action: Action) {
   return userProfileReducer(state, action);
 }
